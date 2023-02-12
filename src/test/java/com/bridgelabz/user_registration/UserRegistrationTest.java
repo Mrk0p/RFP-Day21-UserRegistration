@@ -13,11 +13,13 @@ public class UserRegistrationTest {
         boolean result = userRegistration.firstName("Rajkumar");
         Assert.assertEquals(true, result);
     }
+
     @Test
     public void givenFirstName_ShouldReturnFalse() {
         boolean result = userRegistration.firstName("rajkumar");
         Assert.assertEquals(false, result);
     }
+
     @Test
     public void givenLastName_ShouldReturnTrue() {
         boolean result = userRegistration.lastName("Verma");
@@ -29,6 +31,7 @@ public class UserRegistrationTest {
         boolean result = userRegistration.lastName("verma");
         Assert.assertEquals(false, result);
     }
+
     @Test
     public void givenEmail_ShouldReturnTrue() {
         boolean result = userRegistration.email("rajkumar@gmail.com");
@@ -41,6 +44,7 @@ public class UserRegistrationTest {
         Assert.assertEquals(false, result);
 
     }
+
     @Test
     public void givenPhoneNumber_ShouldReturnTrue() {
         boolean result = userRegistration.mobileNumber("919865325487");
@@ -53,16 +57,19 @@ public class UserRegistrationTest {
         boolean result = userRegistration.mobileNumber("64587541236");
         Assert.assertEquals(false, result);
     }
+
     @Test
-    public void givenPassword_ShouldReturnTrue(){
+    public void givenPassword_ShouldReturnTrue() {
         boolean result = userRegistration.password("Rajubhai");
         Assert.assertEquals(true, result);
     }
+
     @Test
-    public void givenPassword_ShouldReturnFalse(){
+    public void givenPassword_ShouldReturnFalse() {
         boolean result = userRegistration.password("asdfghjk");
         Assert.assertEquals(false, result);
     }
+
     @Test
     public void givenPasswordRule2_ShouldReturnTrue() {
         boolean result = userRegistration.password2("Rajubahi21");
@@ -72,6 +79,18 @@ public class UserRegistrationTest {
     @Test
     public void givenPasswordRule2_ShouldReturnFalse() {
         boolean result = userRegistration.password2("asdfghjk");
+        Assert.assertEquals(false, result);
+    }
+
+    @Test
+    public void givenPasswordRule3_WhenProper_ShouldReturnTrue() {
+        boolean result = userRegistration.password3("asdfghjk");
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenPasswordRule3_WhenNotProper_ShouldReturnFalse() {
+        boolean result = userRegistration.password3("asdfghjkpppp");
         Assert.assertEquals(false, result);
     }
 }

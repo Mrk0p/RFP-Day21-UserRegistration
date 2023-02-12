@@ -1,4 +1,4 @@
-package com.bridgelabz_registration;
+package com.bridgelabz.user_registration;
 
 import com.bridgelabz.user_registration.UserRegistration;
 import org.junit.Test;
@@ -20,25 +20,37 @@ public class UserRegistrationTest {
     }
     @Test
     public void givenLastName_ShouldReturnTrue() {
-        boolean result = userRegistration.lastName("Akhtar");
+        boolean result = userRegistration.lastName("Verma");
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenLastName_ShouldReturnFalse() {
-        boolean result = userRegistration.lastName("akhtar");
+        boolean result = userRegistration.lastName("verma");
         Assert.assertEquals(false, result);
     }
     @Test
     public void givenEmail_ShouldReturnTrue() {
-        boolean result = userRegistration.email("nadeem@gmail.com");
+        boolean result = userRegistration.email("rajkumar@gmail.com");
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenEmail_ShouldReturnFalse() {
-        boolean result = userRegistration.email("nadeem&.com");
+        boolean result = userRegistration.email("raj&.com");
         Assert.assertEquals(false, result);
 
+    }
+    @Test
+    public void givenPhoneNumber_ShouldReturnTrue() {
+        boolean result = userRegistration.mobileNumber("919865325487");
+        Assert.assertEquals(true, result);
+
+    }
+
+    @Test
+    public void givenPhoneNumber_ShouldReturnFalse() {
+        boolean result = userRegistration.mobileNumber("64587541236");
+        Assert.assertEquals(false, result);
     }
 }

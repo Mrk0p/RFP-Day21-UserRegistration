@@ -1,43 +1,112 @@
 package com.bridgelabz.user_registration;
 
-import org.junit.Before;
+import junit.framework.Assert;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
-import java.util.Arrays;
-import java.util.Collection;
-
-import static org.junit.Assert.assertEquals;
-
 public class UserRegistrationTest {
 
-    private String emailTest;
-    private boolean expectedResult;
-    private UserRegistration validateEmail;
+    UserRegistration userRegistration = new UserRegistration();
 
-    public UserRegistrationTest(String email, boolean expectedResult) {
-        this.emailTest = email;
-        this.expectedResult = expectedResult;
-    }
-
-    @Before
-    public void initialize() {
-        validateEmail = new UserRegistration();
-    }
-
-    @Parameterized.Parameters
-    public static Collection data() {
-        return Arrays.asList(new Object[][] { { "abc@yahoo.com", true }, { "abc-100@yahoo.com", true },
-                { "abc.100@yahoo.com", true }, { "abc111@abc.com", true }, { "abc-100@abc.net", true },
-                { "abc.100@abc.com.au", true }, { "abc@1.com", true }, { "abc@gmail.com.com", true },
-                { "abc+100@gmail.com", true }, { "abc", false }, { "abc@.com.my", false }, { "abc123@gmail.a", false },
-                { "abc123@.com", false }, { "abc123@.com.com", false }, { ".abc@abc.com", false },
-                { "abc()*@gmail.com", false }, { "abc@%*.com", false }, { "abc..2002@gmail.com", false },
-                { "abc.@gmail.com", false }, { "abc@abc@gmail.com", false }, { "abc@gmail.com.1a", false },
-                { "abc@gmail.com.aa.au", false } });
+    @Test
+    public void givenFirstName_ShouldReturnTrue() {
+        boolean result = userRegistration.firstName("Rajkumar");
+        Assert.assertEquals(true, result);
     }
 
     @Test
-    public void givenEmailAsVar_ShouldReturnTrueorFalse() {
-        assertEquals(expectedResult, validateEmail.validateEmail(emailTest));
+    public void givenFirstName_ShouldReturnFalse() {
+        boolean result = userRegistration.firstName("rajkumar");
+        Assert.assertEquals(false, result);
+    }
+
+    @Test
+    public void givenLastName_ShouldReturnTrue() {
+        boolean result = userRegistration.lastName("Akhtar");
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenLastName_ShouldReturnFalse() {
+        boolean result = userRegistration.lastName("akhtar");
+        Assert.assertEquals(false, result);
+    }
+
+    @Test
+    public void givenEmail_ShouldReturnTrue() {
+        boolean result = userRegistration.email("nadeem@gmail.com");
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenEmail_ShouldReturnFalse() {
+        boolean result = userRegistration.email("nadeem&.com");
+        Assert.assertEquals(false, result);
+
+    }
+    @Test
+    public void givenPhoneNumber_ShouldReturnTrue() {
+        boolean result = userRegistration.mobileNumber("919925067545");
+        Assert.assertEquals(true, result);
+
+    }
+
+    @Test
+    public void givenPhoneNumber_ShouldReturnFalse() {
+        boolean result = userRegistration.mobileNumber("64587541236");
+        Assert.assertEquals(false, result);
+    }
+    @Test
+    public void givenPassword_ShouldReturnTrue(){
+        boolean result = userRegistration.password("Rajubhai");
+        Assert.assertEquals(true, result);
+    }
+    @Test
+    public void givenPassword_ShouldReturnFalse(){
+        boolean result = userRegistration.password("asdfghjk");
+        Assert.assertEquals(false, result);
+    }
+    @Test
+    public void givenPasswordRule2_ShouldReturnTrue() {
+        boolean result = userRegistration.password2("Rajubahi21");
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenPasswordRule2_ShouldReturnFalse() {
+        boolean result = userRegistration.password2("asdfghjk");
+        Assert.assertEquals(false, result);
+    }
+    @Test
+    public void givenPasswordRule3_ShouldReturnTrue() {
+        boolean result = userRegistration.password3("asdfghjk");
+        Assert.assertEquals(true, result);
+    }
+    @Test
+    public void givenPasswordRule3_ShouldReturnFalse() {
+        boolean result = userRegistration.password3("asdfghjkpppp");
+        Assert.assertEquals(false, result);
+    }
+    @Test
+    public void givenPasswordRule4_ShouldReturnTrue() {
+        boolean result = userRegistration.password4("Rajubhai@55");
+        Assert.assertEquals(true, result);
+
+    }
+
+    @Test
+    public void givenPasswordRule4_ShouldReturnFalse() {
+        boolean result = userRegistration.password4("Asdfgh55");
+        Assert.assertEquals(false, result);
+
+    }
+    @Test
+    public void givenEmail8_WhenNotProper_ShouldReturnTrue() {
+        boolean result = userRegistration.emailIdValidator("abc.xyz@bl.co.in");
+        Assert.assertEquals(true, result);
+    }
+    @Test
+    public void givenEmail9_WhenNotProper_ShouldReturnFalse() {
+        boolean result = userRegistration.emailIdValidator("abcd..2002@gmail.com");
+        Assert.assertEquals(false, result);
+
     }
 }

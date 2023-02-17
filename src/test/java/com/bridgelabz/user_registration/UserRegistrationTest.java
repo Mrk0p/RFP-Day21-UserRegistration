@@ -20,25 +20,25 @@ public class UserRegistrationTest {
 
     @Test
     public void givenLastName_ShouldReturnTrue() {
-        boolean result = userRegistration.lastName("Akhtar");
+        boolean result = userRegistration.lastName("Varma");
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenLastName_ShouldReturnFalse() {
-        boolean result = userRegistration.lastName("akhtar");
+        boolean result = userRegistration.lastName("varma");
         Assert.assertEquals(false, result);
     }
 
     @Test
     public void givenEmail_ShouldReturnTrue() {
-        boolean result = userRegistration.email("nadeem@gmail.com");
+        boolean result = userRegistration.email("rajkumar@gmail.com");
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenEmail_ShouldReturnFalse() {
-        boolean result = userRegistration.email("nadeem&.com");
+        boolean result = userRegistration.email("rajkumar&.com");
         Assert.assertEquals(false, result);
 
     }
